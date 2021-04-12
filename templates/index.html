@@ -5,6 +5,57 @@
     <title>Wow, it's f*cking amazing!!!!</title>
 </head>
 <body>
-<h1> {{flex}}</h1>
+
+<style>
+    .ccs_input{
+        color: green;
+        background-color: black;
+    }
+</style>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<form action="{% url 'alright' %}" method='POST'>
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">Register</button>
+</form>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% if cars_list %}
+
+<table border="5">
+    <tr>
+        <th>id</th>
+        <th>Дата</th>
+        <th>Бренд</th>
+        <th>Модель</th>
+    </tr>
+    {% for car in cars_list %}
+    <tr>
+        <th>{{car.id}}</th>
+        <th>{{car.cars_dt}}</th>
+        <th>{{car.cars_brand}}</th>
+        <th>{{car.cars_model}}</th>
+    </tr>
+    {% endfor %}
+</table>
+{%else%}
+No data
+{%endif%}
+
 </body>
 </html>
