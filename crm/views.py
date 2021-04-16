@@ -1,11 +1,11 @@
 from django.shortcuts import render
 from .models import Cars
 from .forms import CarsForm
+from cms.models import CmsSlider
 
 def first_page(request):
-    cars_list = Cars.objects.all()
-    form = CarsForm()
-    return render(request, './index.html', {'cars_list':cars_list, 'form':form})
+    slider_list = CmsSlider.objects.all()
+    return render(request, './index.html', {'slider_list':slider_list,})
 
 def alright_page(request):
     brand = request.POST['brand']
